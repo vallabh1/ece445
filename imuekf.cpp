@@ -199,7 +199,7 @@ void loop(){
 
   bool pinch = digitalRead(PIN_ZUPT)==HIGH;
   bool still = isStill(fused);
-  if (pinch || still){
+  if (pinch && still){
     if (!zupt_start) zupt_start = millis();
     if (pinch || (millis()-zupt_start >= ZUPT_HOLD_MS)) { ekfUpdateZUPT(v_xy); zupt_start=0; }
   } else { zupt_start=0; }
